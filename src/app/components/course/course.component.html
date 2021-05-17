@@ -1,0 +1,137 @@
+<h1 *ngIf="teacherId !== null || studentId !== null" class="display-5">
+  Your Courses
+</h1>
+<h1 *ngIf="teacherId === null || studentId === null" class="display-5">
+  Courses
+</h1>
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText3"
+  placeholder="Search for course name"
+  class="form-control mb-3 mt-3"
+/>
+
+<div
+  *ngIf="teacherId == null && studentId == null && dataLoaded"
+  class="container-fluid"
+>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Course Fee</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Teacher Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses | filterForCourse: filterText">
+        <th scope="row">{{ course.id }}</th>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.courseFee }}</td>
+        <td>{{ course.duration }}</td>
+        <td>{{ course.teacherId }}</td>
+        <div *ngIf="showCoursesForStudent == false">
+          <button
+            type="button"
+            class="btn btn-outline-dark btn-sm"
+            routerLink="/contents/{{ course.id }}"
+          >
+            View Content
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-dark btn-sm"
+            (click)="delete(course)"
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-dark btn-sm"
+            routerLink="/courses/attendance/{{ course.id }}"
+          >
+            Attendance
+          </button>
+        </div>
+        <div *ngIf="showCoursesForStudent == true">
+          <button
+            type="button"
+            class="btn btn-outline-dark btn-sm"
+            (click)="enroll(course.id)"
+          >
+            Enroll
+          </button>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  *ngIf="teacherId !== null && studentId == null && dataLoaded"
+  class="container-fluid"
+>
+  <table *ngIf="dataLoaded" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses | filterForCourse: filterText">
+        <th scope="row">{{ course.id }}</th>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.duration }}</td>
+
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          routerLink="/contents/{{ course.id }}"
+        >
+          View/Add Content
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-dark ml-4"
+          routerLink="/courses/attendance/{{ course.id }}"
+        >
+          Attendance
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  *ngIf="studentId !== null && teacherId == null && dataLoaded"
+  class="container-fluid"
+>
+  <table *ngIf="dataLoaded" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Teacher Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses | filterForCourse: filterText">
+        <th scope="row">{{ course.id }}</th>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.teacherId }}</td>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          routerLink="/contents/{{ course.id }}"
+        >
+          View Content
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>

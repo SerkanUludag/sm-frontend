@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <form [formGroup]="studentAddForm">
+    <div class="mb-3">
+      <label for="exampleFormControlInput10" class="form-label">User Id</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput10"
+        placeholder="Enter user id"
+        formControlName="userId"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput3" class="form-label"
+        >Student name</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput3"
+        placeholder="Enter name"
+        formControlName="studentName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput4" class="form-label">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput4"
+        placeholder="Enter address"
+        formControlName="address"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput5" class="form-label"
+        >Contact Number</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput5"
+        placeholder="Enter number"
+        formControlName="contactNumber"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput6" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput6"
+        placeholder="Enter name"
+        formControlName="email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput7" class="form-label">College</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput7"
+        placeholder="Enter name"
+        formControlName="college"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput8" class="form-label">Year</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput8"
+        placeholder="Enter year"
+        formControlName="year"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput9" class="form-label"
+        >Start Date</label
+      >
+      <input
+        type="date"
+        class="form-control"
+        id="exampleFormControlInput9"
+        placeholder="Choose date"
+        formControlName="startDate"
+      />
+    </div>
+
+    <button type="button" class="btn btn-outline-dark" (click)="add()">
+      Add
+    </button>
+  </form>
+</div>

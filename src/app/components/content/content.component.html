@@ -1,0 +1,102 @@
+<div *ngIf="dataLoaded" class="container">
+  <h1 class="display-5">{{ currentCourse.courseName }}</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Content</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let content of currentCourseContents">
+        <th scope="row">{{ content.id }}</th>
+        <td>{{ content.content }}</td>
+        <td>{{ content.date | date: "fullDate" }}</td>
+        <a
+          type="button"
+          class="btn btn-outline-dark btn-sm"
+          routerLink="/contents/view/{{ content.id }}"
+          (click)="setCourseId()"
+        >
+          View
+        </a>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Button trigger modal -->
+  <button
+    *ngIf="isTeacher"
+    type="button"
+    class="btn btn-outline-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Add Content
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Content Addition</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Content:</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="5"
+              [(ngModel)]="content"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Date</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="exampleFormControlInput1"
+              [(ngModel)]="contentDate"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="add()"
+            data-bs-dismiss="modal"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div *ngIf="dataLoaded" class="card text-center">
+  <div class="card-header display-5">{{ course.courseName }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ content.date | date: "fullDate" }}</h5>
+    <p class="card-text">
+      {{ content.content }}
+    </p>
+    <a routerLink="/contents/{{ course.id }}" class="btn btn-outline-dark"
+      >Return</a
+    >
+  </div>
+</div>

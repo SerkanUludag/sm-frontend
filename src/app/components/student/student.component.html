@@ -1,0 +1,46 @@
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText4"
+  placeholder="Search for student name"
+  class="form-control mb-3 mt-3"
+/>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">User Id</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Contact Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">College</th>
+      <th scope="col">Fee</th>
+      <th scope="col">Fee Paid</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students | filterForStudent: filterText">
+      <th scope="row">{{ student.id }}</th>
+      <td>{{ student.userId }}</td>
+      <td>{{ student.studentName }}</td>
+      <td>{{ student.address }}</td>
+      <td>{{ student.contactNumber }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.college }}</td>
+      <td>{{ student.fee }}</td>
+      <td>{{ student.feePaid }}</td>
+      <td>{{ student.startDate | date: "shortDate" }}</td>
+      <td>{{ student.endDate }}</td>
+      <button
+        type="button"
+        class="btn btn-outline-dark btn-sm"
+        (click)="delete(student)"
+      >
+        Delete
+      </button>
+    </tr>
+  </tbody>
+</table>

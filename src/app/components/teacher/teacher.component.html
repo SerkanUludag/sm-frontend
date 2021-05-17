@@ -1,0 +1,32 @@
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText1"
+  placeholder="Search for teacher name"
+  class="form-control mb-3 mt-3"
+/>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Teacher Name</th>
+      <th scope="col">Subject</th>
+      <th scope="col">User Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of teachers | filterForTeacher: filterText">
+      <th scope="row">{{ teacher.id }}</th>
+      <td>{{ teacher.teacherName }}</td>
+      <td>{{ teacher.subject }}</td>
+      <td>{{ teacher.userId }}</td>
+      <button
+        type="button"
+        class="btn btn-outline-dark btn-sm"
+        (click)="delete(teacher)"
+      >
+        Delete
+      </button>
+    </tr>
+  </tbody>
+</table>

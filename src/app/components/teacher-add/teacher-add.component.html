@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <form [formGroup]="teacherAddForm">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Teacher name</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Enter name"
+        formControlName="teacherName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label">Subject</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput2"
+        placeholder="Enter subject"
+        formControlName="subject"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput3" class="form-label">User Id</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput3"
+        placeholder="Enter user id"
+        formControlName="userId"
+      />
+    </div>
+    <button type="button" class="btn btn-outline-dark" (click)="add()">
+      Add
+    </button>
+  </form>
+</div>

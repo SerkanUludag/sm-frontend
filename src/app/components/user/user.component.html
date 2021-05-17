@@ -1,0 +1,30 @@
+<input
+  type="text"
+  [(ngModel)]="filterText"
+  id="filterText2"
+  placeholder="Search for username"
+  class="form-control mb-3 mt-3"
+/>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Username</th>
+      <th scope="col">User Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | filterForUser: filterText">
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ getUserType(user.userType) }}</td>
+      <button
+        type="button"
+        class="btn btn-outline-dark btn-sm"
+        (click)="delete(user)"
+      >
+        Delete
+      </button>
+    </tr>
+  </tbody>
+</table>

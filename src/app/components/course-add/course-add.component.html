@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <form [formGroup]="courseAddForm">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Course name</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput3"
+        placeholder="Enter name"
+        formControlName="courseName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label"
+        >Course Fee</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput4"
+        placeholder="Enter fee"
+        formControlName="courseFee"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label">Duration</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput5"
+        placeholder="Enter duration"
+        formControlName="duration"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label"
+        >Teacher Id</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="exampleFormControlInput6"
+        placeholder="Enter id"
+        formControlName="teacherId"
+      />
+    </div>
+
+    <button type="button" class="btn btn-outline-dark" (click)="add()">
+      Add
+    </button>
+  </form>
+</div>
